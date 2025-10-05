@@ -1,0 +1,313 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hema Sri — Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: #121212;
+      color: #e0e0e0;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* Header */
+    header {
+      background: rgba(0,0,0,0.85);
+      color: #fff;
+      text-align: center;
+      padding: 2rem 1rem;
+      position: sticky;
+      top: 0;
+      backdrop-filter: blur(10px);
+      border-radius: 0 0 15px 15px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.7);
+    }
+
+    /* Animated Header Font */
+    header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      background: linear-gradient(90deg, #00bcd4, #667eea, #ff6ec7, #00bcd4);
+      background-size: 300% 300%;
+      animation: gradientMove 5s ease infinite, fadeIn 2s ease;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    @keyframes gradientMove {
+      0% {background-position: 0% 50%;}
+      50% {background-position: 100% 50%;}
+      100% {background-position: 0% 50%;}
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0; transform: translateY(-20px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+
+    header p {
+      font-size: 1.2rem;
+      opacity: 0.8;
+    }
+
+    nav ul {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-top: 1rem;
+      list-style: none;
+      flex-wrap: wrap;
+    }
+    nav ul li a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+    nav ul li a:hover {
+      color: #00bcd4;
+    }
+
+    /* Sections */
+    section {
+      padding: 4rem 2rem;
+      max-width: 900px;
+      margin: 2rem auto;
+    }
+    section h2 {
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+      color: #fff;
+      position: relative;
+    }
+    section h2::after {
+      content: '';
+      display: block;
+      width: 60px;
+      height: 4px;
+      margin: 0.5rem auto;
+      background: #00bcd4;
+      border-radius: 2px;
+    }
+
+    /* Card base style */
+    .card {
+      color: #ffffff;
+      padding: 1.8rem;
+      border-radius: 15px;
+      margin: 1rem 0;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.7);
+      transition: transform 0.3s, box-shadow 0.3s;
+      background-size: cover;
+      background-position: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.55);
+      border-radius: 15px;
+    }
+    .card > * {
+      position: relative;
+      z-index: 1;
+    }
+    .card:hover {
+      transform: translateY(-7px);
+      box-shadow: 0 12px 25px rgba(0,188,212,0.6);
+    }
+
+    /* Specific backgrounds */
+    .about-card {background-image: url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=900&q=60');}
+    .internship-card {background-image: url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=900&q=60');}
+    .education-card {background-image: url('https://images.unsplash.com/photo-1584697964403-270e7d923f3b?auto=format&fit=crop&w=900&q=60');}
+    .skills-java {background-image: url('https://images.unsplash.com/photo-1581093588401-22da8a5aab65?auto=format&fit=crop&w=900&q=60');}
+    .skills-sql {background-image: url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=900&q=60');}
+    .skills-html {background-image: url('https://images.unsplash.com/photo-1505685296765-3a2736de412f?auto=format&fit=crop&w=900&q=60');}
+    .skills-problem {background-image: url('https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?auto=format&fit=crop&w=900&q=60');}
+    .resume-card {background-image: url('https://images.unsplash.com/photo-1581090700227-4c4a1aa99d5f?auto=format&fit=crop&w=900&q=60');}
+    .contact-card {background-image: url('https://images.unsplash.com/photo-1521791055366-0d553872125f?auto=format&fit=crop&w=900&q=60');}
+
+    /* Grid */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+
+    /* Profile photo */
+    .profile-photo {
+      display: block;
+      max-width: 150px;
+      margin: 1rem auto;
+      border-radius: 50px;
+      border: 3px solid #00bcd4;
+    }
+
+    /* Links */
+    a {
+      color: #00bcd4;
+      text-decoration: none;
+    }
+    a:hover {
+      color: #fff;
+    }
+
+    /* Resume Download Button */
+    .download-btn {
+      background: #00bcd4;
+      color: #fff;
+      border: none;
+      padding: 0.8rem 1.5rem;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: background 0.3s, transform 0.2s;
+      margin-top: 0.5rem;
+    }
+    .download-btn:hover {
+      background: #0097a7;
+      transform: translateY(-2px);
+    }
+
+    /* Footer */
+    footer {
+      background: rgba(0,0,0,0.85);
+      color: #fff;
+      text-align: center;
+      padding: 1.5rem;
+      border-radius: 15px 15px 0 0;
+      margin-top: 2rem;
+      box-shadow: 0 -5px 15px rgba(0,0,0,0.7);
+    }
+
+    /* Mobile Responsiveness */
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 1.8rem;
+      }
+      header p {
+        font-size: 1rem;
+      }
+      nav ul {
+        flex-wrap: wrap;
+        gap: 1rem;
+      }
+      section {
+        padding: 2rem 1rem;
+      }
+      .profile-photo {
+        max-width: 120px;
+      }
+      section h2 {
+        font-size: 1.5rem;
+      }
+      .download-btn {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Hema Sri</h1>
+    <p>Portfolio | B.Tech IT | Aspiring Software Developer</p>
+    <nav>
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#internship">Internship</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#resume">Resume</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- About -->
+  <section id="about">
+    <h2>About Me</h2>
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRKWXmB4i2_piQh5jtelxaCUErQtda3liW9Q&s" alt="Hema Sri Photo" class="profile-photo">
+    <div class="card about-card">
+      <p>Hello! I'm <b>Hema Sri</b>, a final-year B.Tech IT student passionate about technology and problem-solving. I enjoy learning new skills and aspire to become a successful Software Developer.</p>
+    </div>
+  </section>
+
+  <!-- Internship -->
+  <section id="internship">
+    <h2>Internship</h2>
+    <div class="card internship-card">
+      <h3>Web Development Intern</h3>
+      <p>Worked as a Web Development Intern where I gained hands-on experience in HTML, CSS, JavaScript, and responsive design. Contributed to building interactive and user-friendly web pages.</p>
+    </div>
+  </section>
+
+  <!-- Education -->
+  <section id="education">
+    <h2>Education</h2>
+    <div class="card education-card">
+      <p><b>B.Tech Information Technology</b> — Final Year</p>
+    </div>
+  </section>
+
+  <!-- Skills -->
+  <section id="skills">
+    <h2>Skills</h2>
+    <div class="grid">
+      <div class="card skills-java"><p>Java</p></div>
+      <div class="card skills-sql"><p>SQL</p></div>
+      <div class="card skills-html"><p>HTML & CSS</p></div>
+      <div class="card skills-problem"><p>Problem Solving</p></div>
+    </div>
+  </section>
+
+  <!-- Resume -->
+  <section id="resume">
+    <h2>Resume</h2>
+    <div class="card resume-card">
+      <p>You can download my resume here:</p>
+      <a href="HEMASRI R_RESUME.pdf" download>
+        <button class="download-btn">Download Resume</button>
+      </a>
+      <p>Summary:</p>
+      <ul>
+        <li>Final-year B.Tech IT student with internship experien <li>Skills: Java, SQL, HTML, CSS, Problem Solving.</li>
+        <li>Aspiring Software Developer with passion for technology and innovation.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact">
+    <h2>Contact</h2>
+    <div class="card contact-card">
+      <p>Email: <a href="mailto:hemasri@example.com">hemasri@example.com</a></p>
+      <p>LinkedIn: <a href="https://www.linkedin.com/in/hema-sri-rajendran-608bb5299" target="_blank">linkedin.com/in/hema-sri</a></p>
+      <p>GitHub: <a href="#">github.com/hemasri</a></p>
+    </div>
+  </section>
+
+  <footer>
+    <div>
+      <a href="https://www.linkedin.com/in/hema-sri-rajendran-608bb5299" target="_blank">LinkedIn</a> |
+      <a href="#">GitHub</a> |
+      <a href="mailto:hemasri@example.com">Email</a>
+    </div>
+  </footer>
+
+</body>
+</html>
